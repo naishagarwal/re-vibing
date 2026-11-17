@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Misty: UI Prototyping Through Interactive Conceptual Blending
 
-## Getting Started
+Misty is an experimental web application inspired by the research paper "Misty: UI Prototyping Through Interactive Conceptual Blending". It provides a novel UI workflow that allows developers to rapidly incorporate diverse aspects (like layout, color, and style) from design examples into work-in-progress UIs.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Global Blending**: Upload an example UI screenshot and blend its layout or style directly into your current work-in-progress React code.
+- **Drag-and-Drop Blending**: Select a specific cropped region of an example image to blend into your code.
+- **Semantic Diff**: Instead of just giving you the final code, Misty categorizes the AI's changes (e.g., "Color Changes", "Layout Changes"). You can toggle these categories on and off to tweak the final design.
+- **Live Preview**: Your work-in-progress React and Tailwind CSS code is rendered in real-time in the browser.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## How to Launch
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Navigate to the project directory:
+   ```bash
+   cd misty-app
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Add your OpenAI API key:
+   Create a `.env.local` file in the root directory and add your key:
+   ```env
+   OPENAI_API_KEY=your_openai_api_key_here
+   ```
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+5. Open your browser to `http://localhost:3000`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Usage Guide
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Write WIP Code**: On the left pane, write or paste your work-in-progress React component. Use Tailwind CSS for styling. (Note: imports are not supported in the live editor; use global React and LucideIcons).
+2. **Upload Reference Image**: Upload a screenshot, sketch, or design mockup that you want to draw inspiration from.
+3. **Select Region (Optional)**: If you want to use the entire image, you can leave it as is. If you want to perform a specific "Drag-and-Drop" blend, crop the relevant region of the image.
+4. **Choose Aspect**: Select whether you want to blend the "Layout", "Visual Style", or "Color Theme" from the reference image.
+5. **Blend**: Click "Global Blend" or "Blend Cropped Area" to trigger the conceptual blending via AI.
+6. **Review Changes**: Once the AI finishes, it will present the updated code and a "Semantic Diff" panel. Toggle specific categories (like Font or Color changes) to fine-tune the design.
