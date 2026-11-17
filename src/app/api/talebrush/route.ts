@@ -12,7 +12,7 @@ export async function POST(req: Request) {
 
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ 
-      model: "gemini-1.5-flash",
+      model: "gemini-1.5-flash-latest",
     });
     
     const fortune_text = fortunes.map((f: number) => f.toFixed(2)).join(', ');
@@ -21,7 +21,8 @@ export async function POST(req: Request) {
 Protagonist: ${protagonist}
 Starting Text: "${starting_text}"
 
-The user has sketchedThe user has sketchedThe user has sketchedThe user has sketchedTues range from -1 (terrible luck/misfortune) to 1 (great luck/success).
+The user has sketchedThe user has sketchedThe user has sketchedThets.
+The fortune values range from -1 (terrible luck/misfortune) to 1 (great luck/success).
 The values are: ${fortune_text}
 
 Generate exactly ${fortunes.length} short sentences that logically follow the "Starting Text".
