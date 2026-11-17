@@ -37,7 +37,7 @@ export default function Home() {
           <Link href="/talebrush" className="group block bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border overflow-hidden">
             <div className="p-6 h-full flex flex-col">
               <h2 className="text-2xl font-bold text-green-700 mb-2 group-hover:text-green-800">TaleBrush</h2>
-              <p className="text-gray-700 mb-4 flex-1">Sketching Stories with LLMs. Co-create a story with AI by sketching a protagonist's changing fortune curve on a graph.</p>
+              <p className="text-gray-700 mb-4 flex-1">Sketching Stories with LLMs. Co-create a story with AI by sketching a protagonist&apos;s changing fortune curve on a graph.</p>
               <div className="text-green-600 font-medium text-sm flex items-center">Try Prototype →</div>
             </div>
           </Link>
