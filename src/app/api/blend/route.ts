@@ -13,7 +13,7 @@ export async function POST(req: Request) {
 
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ 
-      model: "gemini-1.5-pro",
+      model: "gemini-1.5-pro-latest",
       generationConfig: { responseMimeType: "application/json" }
     });
 
