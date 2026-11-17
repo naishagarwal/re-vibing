@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse } from 'next/server';
-import { GoogleGenerativeAI } from 'openai';
+import OpenAI from 'openai';
 
 export async function POST(req: Request) {
   try {
@@ -11,12 +11,8 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'API key is not set in environment (need GEMINI_API_KEY or OPENAI_API_KEY)' }, { status: 500 });
     }
 
-    const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ 
-      model: "gemini-1.5-pro",
-      generationConfig: { responseMimeType: "application/json" }
-    });
-
+    const openai = new OpenAI({ apiKey });
+    const model = openai.chat.completions;
     let systemPrompt = '';
 
     if (type === 'global') {
@@ -75,9 +71,9 @@ Return result in JSON format like the global blend prompt.
     const mimeMatch = referenceImage.match(/data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+).*,.*/);
     const mimeType = mimeMatch ? mimeMatch[1] : 'image/jpeg';
 
-    const result = await model.generateContent([
-      { text: systemPrompt },
-      { inlineData: { data: base64Data, mimeType } }
+    const result = await model.create([
+      { role: 'user', content: systemPrompt },
+      { role: 'user', content: { inlineData: { data: base64Data, mimeType } } }
     ]);
     
     const response = await result.response;
