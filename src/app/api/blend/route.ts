@@ -6,13 +6,15 @@ export async function POST(req: Request) {
   try {
     const { wipCode, referenceImage, aspect, type } = await req.json();
 
-    const apiKey = process.env.GEMINI_API_KEY || process.env.OPENAI_API_KEY;
+    const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) {
-      return NextResponse.json({ error: 'API key is not set in environment (need GEMINI_API_KEY or OPENAI_API_KEY)' }, { status: 500 });
+      return NextResponse.json(
+        { error: 'API key is not set in environment (need OPENAI_API_KEY)' },
+        { status: 500 },
+      );
     }
 
     const openai = new OpenAI({ apiKey });
-    const model = openai.chat.completions;
     let systemPrompt = '';
 
     if (type === 'global') {
@@ -67,24 +69,30 @@ Return result in JSON format like the global blend prompt.
 }`;
     }
 
-    const base64Data = referenceImage.split(',')[1];
-    const mimeMatch = referenceImage.match(/data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+).*,.*/);
-    const mimeType = mimeMatch ? mimeMatch[1] : 'image/jpeg';
+    const result = await openai.chat.completions.create({
+      model: 'gpt-4.1-mini',
+      response_format: { type: 'json_object' },
+      messages: [
+        {
+          role: 'user',
+          content: [
+            { type: 'text', text: systemPrompt },
+            { type: 'image_url', image_url: { url: referenceImage } },
+          ],
+        },
+      ],
+    });
 
-    const result = await model.create([
-      { role: 'user', content: systemPrompt },
-      { role: 'user', content: { inlineData: { data: base64Data, mimeType } } }
-    ]);
-    
-    const response = await result.response;
-    const content = response.text();
-    
+    const content = result.choices[0]?.message.content;
     if (!content) throw new Error('No content returned');
+
     const parsed = JSON.parse(content);
     return NextResponse.json(parsed);
-
   } catch (error: unknown) {
     console.error(error);
-    return NextResponse.json({ error: (error as Error).message }, { status: 500 });
+    return NextResponse.json(
+      { error: (error as Error).message },
+      { status: 500 },
+    );
   }
 }
