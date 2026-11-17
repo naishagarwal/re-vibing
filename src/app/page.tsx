@@ -5,7 +5,7 @@ export default function Home() {
     { id: 'misty', name: 'Misty', desc: 'UI Prototyping Through Interactive Conceptual Blending.', c1: 'blue', o: 'Semantic Diff', vId: 'misty-variants', v: 'Multiple Variations', c2: 'blue' },
     { id: 'selenite', name: 'Selenite', desc: 'Scaffolding Online Sensemaking Overviews.', c1: 'teal', o: 'Text Comparison Matrix', vId: 'selenite-scoring', v: 'Quantitative Scoring', c2: 'teal' },
     { id: 'videodiff', name: 'VideoDiff', desc: 'Human-AI Video Co-Creation with Alternatives.', c1: 'indigo', o: 'Parallel Transcripts', vId: 'videodiff-merge', v: 'Inline Merge UI', c2: 'rose' },
-    { id: '    { id: '    { id: '    { id: '    { id: '    { id: '    { id:erative Models.', c1: 'green', o: 'Continuous Fortune Sketch', vId: 'talebrush-sliders', v: 'Discrete Emotion Sliders', c2: 'amber' },
+    { id: 'talebrush', name: 'TaleBrush', desc: 'Story Co-Creation with Generative Models.', c1: 'green', o: 'Continuous Fortune Sketch', vId: 'talebrush-sliders', v: 'Discrete Emotion Sliders', c2: 'amber' },
     { id: 'bubblecursor', name: 'BubbleCursor', desc: 'Targeting facilitation technique using area cursors.', c1: 'red', o: 'Voronoi Dynamic Resizing', vId: 'bubblecursor-magnetic', v: 'Gravity Wells (Magnetic)', c2: 'red' },
     { id: 'octopocus', name: 'Octopocus', desc: 'Dynamic guide for continuous gesture recognition.', c1: 'sky', o: 'Continuous Cursor Paths', vId: 'octopocus-cheatsheet', v: 'Static Sidebar Cheat Sheet', c2: 'sky' },
     { id: 'shift', name: 'Shift', desc: 'Solving fat-finger occlusion on touch screens.', c1: 'emerald', o: 'Shifted Callout Window', vId: 'shift-offset', v: 'Offset Virtual Cursor', c2: 'emerald' },
