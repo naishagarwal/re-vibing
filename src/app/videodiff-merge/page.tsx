@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */'use client';
+'use client';
 import { useState } from 'react';
 import Link from 'next/link';
 
@@ -12,7 +12,7 @@ export default function VideoDiffMerge() {
     try {
       const res = await fetch('/api/videodiff-merge', {
         method: 'POST', headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ transcript: &quot;Welcome to my video. Umm, today we will talk about cats. They are cute. This video is sponsored by nobody.&quot; })
+        body: JSON.stringify({ transcript: "Welcome to my video. Umm, today we will talk about cats. They are cute. This video is sponsored by nobody." })
       });
       setData(await res.json());
     } finally { setLoading(false); }
@@ -21,11 +21,8 @@ export default function VideoDiffMerge() {
   const toggle = (i: number) => {
     const next = new Set(rejected);
     if(next.has(i)) next.delete(i); else next.add(i);
-    setRejected(next);
-  };
-
-  return (
-    <div className="p-8 max-w-4xl mx-auto font-sans">
+    if(next.has(i)) next.delete(i); else next.add(i);
+ my video.max-w-4xl mx-auto font-sans">
       <Link href="/" className="text-rose-600 mb-4 block hover:underline">← Back</Link>
       <h1 className="text-3xl font-bold mb-2 text-rose-800">VideoDiff: Inline Merge UI</h1>
       <p className="mb-6 text-gray-600">Design Decision Changed: From 3 parallel alternatives to 1 unified sequence with inline accept/reject toggles.</p>
