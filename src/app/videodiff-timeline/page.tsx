@@ -23,18 +23,15 @@ export default function VideoDiffTimeline() {
       <Link href="/" className="text-indigo-600 mb-4 block hover:underline">← Back</Link>
       <h1 className="text-3xl font-bold mb-2">VideoDiff: Tim/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
-import { useState } fat'use client';
-import { useState } from 'react';
-importthan a script.</import Link from 'next/link';
+import { useState } fations as visual time-blocks (like Premiere Pro) rather thimport { use</import Link from 'next/link';
 
 e{g
 export default function Vidcla  const [loading, setLoading] = useState(falou  const [data, setData] = useState<any>(null);
-imeline'}</button>
-
-      {data?.blocks && (
-         setLoading(true);
+im
+  const generate = async () => {
+    setLoad       setLoading(true);
     try {p-    try {
-      consrf      cuto        method: 'POST', headers: {'Content-Type': 'applic1         body: JSON.stringify({ transcript: "Welcome to my : number) =>       });
+      consrf      auto        method: 'POST', headers: {'Content-Type': 'applic1         body: JSON.stringify({ transcript: "Welcome to my video. Umm,>       });
       setData(await res.json());
     } finally { setLoading(false); }
   };
@@ -44,17 +41,15 @@ imeline'}</button>
   0"      se      } finally { setLoading(falsol  };
 
   return (
-    <div classNamet-bold";    <div         <Link href="/" className="text-indigo-600 mb-4        <h1 className="text-3xl font-bold mb-2">VideoDiff: Tim/* eslint-disable @typescript-ex'use client';
-import { useState } fat'use client';
-import { useState } from 'react';
-importthan a script.</import utimport { use%'import { useState } f    <span classNimportthan a script.</import Lin}<
+    <div classNamet-bold";    <div         <Link href="/" className="text-indigo-600 mb-4        <h1 className="text-3xl font-bold mb-2">VideoDiff: Tim/* eslint-disable @typescript-le'use client';
+import { useState } fations as visual time-blocks (like Premiere Pro) rather thimport { use</import cuimport { use0%
 e{g
-export default function Vidcla  const [loadinty-ex mimeline'}</button>
-
-      {data?.blocks && (
-         setLoading(true);
+export default function Vidcla  const [loading, setLoading] = useState(falou  const [data, setData] = useState<any>(ityex0 im
+  const generate = async () => {
+    setLoad       setLoading(true);
     try {p-    try {
-      consrf      cuto     </d
-      {data?.blo</d v>
+      consrf      auto      </div>
+      )}
+    </div>
   );
 }
