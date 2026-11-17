@@ -20,7 +20,8 @@ export default function VideoDiffTimeline() {
 
   return (
     <div className="p-8 max-w-5xl mx-auto font-sans">
-      <Link href="/" className="text-indigo-600 mb-4 block hover:underline">?     <Link href="/" className="text-indigo-600 mb-old mb-2">VideoDiff: Timeline NLE View</h1>
+      <Link href="/" className="text-indigo-600 mb-4 block hover:underline">← Back</Link>
+      <h1 className="text-3xl font-bold mb-2">VideoDiff: Timeline NLE View</h1>
       <p className="mb-6 text-gray-600">Design Decision: Represent variations as visual time-blocks (like Premiere Pro) rather than a script.</p>
 
       <button onClick={generate} disabled={loading} className="bg-indigo-600 text-white px-4 py-2 rounded mb-8">{loading?'Generating...':'Generate Timeline'}</button>
