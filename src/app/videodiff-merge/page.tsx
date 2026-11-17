@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
@@ -21,8 +22,11 @@ export default function VideoDiffMerge() {
   const toggle = (i: number) => {
     const next = new Set(rejected);
     if(next.has(i)) next.delete(i); else next.add(i);
-    if(next.has(i)) next.delete(i); else next.add(i);
- my video.max-w-4xl mx-auto font-sans">
+    setRejected(next);
+  };
+
+  return (
+    <div className="p-8 max-w-4xl mx-auto font-sans">
       <Link href="/" className="text-rose-600 mb-4 block hover:underline">← Back</Link>
       <h1 className="text-3xl font-bold mb-2 text-rose-800">VideoDiff: Inline Merge UI</h1>
       <p className="mb-6 text-gray-600">Design Decision Changed: From 3 parallel alternatives to 1 unified sequence with inline accept/reject toggles.</p>
