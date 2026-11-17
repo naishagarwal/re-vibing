@@ -11,7 +11,8 @@ export default function Shift() {
 
   return (
     <div className="p-8 max-w-5xl mx-auto font-sans select-none">
-      <Link href="/" className="text-teal-600 mb      <Link href="/" className="text-teal-600 mb      <Link hrefclassName="text-3xl font-bold mb-2">Shift</h1>
+      <Link href="/" className="text-teal-600 mb-4 block hover:underline">← Back to Showcase</Link>
+      <h1 className="text-3xl font-bold mb-2">Shift</h1>
       <p className="mb-6 text-gray-600">Original: Callout appears above finger to solve fat-finger occlusion. (Click and drag to test)</p>
       
       <div 

@@ -12,7 +12,9 @@ export default function Wedge() {
      const rx = 250, ry = 200; // Half-width/height of viewport frame (500x400)
      const t_scale = Math.min(Math.abs(rx/dx), Math.abs(ry/dy));
      const ix = t_scale < 1 ? t_scale * dx : dx;
-     const iy = t_scale < 1 ? t_s     const iy = t_scale < 1 ? t_s     const iy = t_scale < 1 ? tpos.x + ix} cy={pos.y + iy} r="10" fill="red" />;
+     const iy = t_scale < 1 ? t_scale * dy : dy;
+     
+     if (t_scale >= 1) return <circle cx={pos.x + ix} cy={pos.y + iy} r="10" fill="red" />;
 
      const a = Math.atan2(dy, dx) * 180 / Math.PI;
      const dist = Math.hypot(dx, dy);
