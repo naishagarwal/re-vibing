@@ -17,19 +17,17 @@ const files = [
     'src/app/talebrush-branching/page.tsx'
 ];
 
-files.forEach(f => {
+for (let i = 0; i < files.length; i++) {
+    const f = files[i];
     try {
         let content = fs.readFileSync(f, 'utf8');
         if (!content.includes('eslint-disable')) {
             content = '/* eslint-disable @typescript-eslint/no-explicit-any */\n' + content;
         }
-        }
-  content = '/* eslint-disable @typescript-eslint/no-ecomponents
         if (f.includes('videodiff-merge/page.tsx')) {
             content = content.replace(/"Welcome to my video. Umm, today we will talk about cats. They are cute. This video is sponsored by nobody."/g, 
             '&quot;Welcome to my video. Umm, today we will talk about cats. They are cute. This video is sponsored by nobody.&quot;');
         }
-
         if (f.includes('videodiff-rules/page.tsx')) {
             content = content.replace(/"Cut all pauses"/g, '&quot;Cut all pauses&quot;');
         }
@@ -37,4 +35,4 @@ files.forEach(f => {
     } catch (e) {
         console.error("Could not process " + f);
     }
-});
+}
