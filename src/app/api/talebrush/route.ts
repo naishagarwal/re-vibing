@@ -13,7 +13,6 @@ export async function POST(req: Request) {
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ 
       model: "gemini-1.5-flash",
-      generationConfig: { responseMimeType: "application/json" }
     });
     
     const fortune_text = fortunes.map((f: number) => f.toFixed(2)).join(', ');
@@ -22,8 +21,7 @@ export async function POST(req: Request) {
 Protagonist: ${protagonist}
 Starting Text: "${starting_text}"
 
-The user has sketched a fortune curve with ${fortunes.length} points.
-The fortune values range from -1 (terrible luck/misfortune) to 1 (great luck/success).
+The user has sketchedThe user has sketchedThe user has sketchedThe user has sketchedTues range from -1 (terrible luck/misfortune) to 1 (great luck/success).
 The values are: ${fortune_text}
 
 Generate exactly ${fortunes.length} short sentences that logically follow the "Starting Text".
@@ -36,13 +34,18 @@ Return strict JSON matching this structure:
     "Sentence 1 matching fortune 1...",
     "Sentence 2 matching fortune 2..."
   ]
-}`;
+}
+Make sure to return only JSON without markdown formatting.`;
 
     const result = await model.generateContent(prompt);
     const response = await result.response;
-    const content = response.text();
+    let content = response.text();
     
     if (!content) throw new Error('No content');
+
+    if (content.startsWith('\`\`\`json')) {
+      content = content.replace(/\`\`\`json\n?/, '').replace(/\`\`\`$/, '');
+    }
     return NextResponse.json(JSON.parse(content));
   } catch (error: unknown) {
     return NextResponse.json({ error: (error as Error).message }, { status: 500 });
