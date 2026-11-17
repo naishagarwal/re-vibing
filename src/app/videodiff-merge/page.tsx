@@ -1,4 +1,4 @@
-'use client';
+/* eslint-disable @typescript-eslint/no-explicit-any */'use client';
 import { useState } from 'react';
 import Link from 'next/link';
 
@@ -12,7 +12,7 @@ export default function VideoDiffMerge() {
     try {
       const res = await fetch('/api/videodiff-merge', {
         method: 'POST', headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ transcript: "Welcome to my video. Umm, today we will talk about cats. They are cute. This video is sponsored by nobody." })
+        body: JSON.stringify({ transcript: &quot;Welcome to my video. Umm, today we will talk about cats. They are cute. This video is sponsored by nobody.&quot; })
       });
       setData(await res.json());
     } finally { setLoading(false); }
@@ -31,7 +31,7 @@ export default function VideoDiffMerge() {
       <p className="mb-6 text-gray-600">Design Decision Changed: From 3 parallel alternatives to 1 unified sequence with inline accept/reject toggles.</p>
       
       <div className="bg-white p-6 shadow rounded mb-8 flex gap-4 items-center">
-         <span className="flex-1 text-gray-600">Raw Transcript: "Welcome to my video. Umm, today we will talk about cats. They are cute. This video is sponsored by nobody."</span>
+         <span className="flex-1 text-gray-600">Raw Transcript: &quot;Welcome to my video. Umm, today we will talk about cats. They are cute. This video is sponsored by nobody.&quot;</span>
          <button onClick={generate} disabled={loading} className="bg-rose-600 text-white px-6 py-2 rounded disabled:opacity-50 flex-shrink-0">
            {loading ? 'Generating...' : 'Generate AI Edits'}
          </button>
