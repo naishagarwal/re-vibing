@@ -12,20 +12,19 @@ export async function POST(req: Request) {
     }
 
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-    const prompt = \`You are the Selenite system. Your goal is to scaffold online sensemaking by providing a comprehensive overview of options and criteria for a given topic.
+    const prompt = `You are the Selenite system. Your goal is to scaffold online sensemaking by providing a comprehensive overview of options and criteria for a given topic.
 Topic: ${topic}
 Generate a JSON response containing:
 1. A list of 4 "options" for this topic.
 2. A list of 4 "criteria" to evaluate them.
-3. A "matrix" (dictionary of option -> d3. A "matrix" (dictionary of option -> d3. A "matrix" (dictionarat criteria).
-Use this exact JSON structure:
+3. A "matrix" (dictionary of option -> dictionary of criteria -> short text3. A "matrix" (dictionary of option -> dictionary of criteria ->tructure:
 {
     "options": ["Opt1", "Opt2", "Opt3", "Opt4"],
     "criteria": ["Crit1", "Crit2", "Crit3", "Crit4"],
     "matrix": {
         "Opt1": {"Crit1": "...", "Crit2": "...", "Crit3": "...", "Crit4": "..."}
     }
-}\`;
+}`;
 
     const response = await openai.chat.completions.create({
       model: 'gpt-4o',
