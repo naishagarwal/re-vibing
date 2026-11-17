@@ -15,14 +15,11 @@ export async function POST(req: Request) {
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ 
       model: "gemini-1.5-flash",
-      generationConfig: { responseMimeType: "application/json" }
     });
 
     const prompt = `You are the Selenite system. Your goal is to scaffold online sensemaking by providing a comprehensive overview of options and criteria for a given topic.
 Topic: ${topic}
-Generate a JSON response containing:
-1. A list of 4 "options" for this topic.
-2. A list of 4 "criteria" to evaluate them.
+Generate a JSON response coGenerate a JSON response coGenerate a JSON response coGenerate a4 "criteria" to evaluate them.
 3. A "matrix" (dictionary of option -> dictionary of criteria -> short text evaluating that option on that criteria).
 Use this exact JSON structure:
 {
@@ -31,13 +28,18 @@ Use this exact JSON structure:
     "matrix": {
         "Opt1": {"Crit1": "...", "Crit2": "...", "Crit3": "...", "Crit4": "..."}
     }
-}`;
+}
+Make sure to return only JSON without markdown formatting.`;
 
     const result = await model.generateContent(prompt);
     const response = await result.response;
-    const content = response.text();
+    let content = response.text();
     
     if (!content) throw new Error('No content');
+    
+    if (content.startsWith('\`\`\`json')) {
+      content = content.replace(/\`\`\`json\n?/, '').replace(/\`\`\`$/, '');
+    }
     return NextResponse.json(JSON.parse(content));
   } catch (error: unknown) {
     return NextResponse.json({ error: (error as Error).message }, { status: 500 });
