@@ -1,46 +1,36 @@
 import Link from 'next/link';
 
 export default function Home() {
+  const systems = [
+    { id: 'misty', name: 'Misty', desc: 'UI Prototyping Through Interactive Conceptual Blending.', c1: 'blue', o: 'Semantic Diff', vId: 'misty-variants', v: 'Multiple Variations', c2: 'blue' },
+    { id: 'selenite', name: 'Selenite', desc: 'Scaffolding Online Sensemaking Overviews.', c1: 'teal', o: 'Text Comparison Matrix', vId: 'selenite-scoring', v: 'Quantitative Scoring', c2: 'teal' },
+    { id: 'videodiff', name: 'VideoDiff', desc: 'Human-AI Video Co-Creation with Alternatives.', c1: 'indigo', o: 'Parallel Transcripts', vId: 'videodiff-merge', v: 'Inline Merge UI', c2: 'rose' },
+    { id: '    { id: '    { id: '    { id: '    { id: '    { id: '    { id:erative Models.', c1: 'green', o: 'Continuous Fortune Sketch', vId: 'talebrush-sliders', v: 'Discrete Emotion Sliders', c2: 'amber' },
+    { id: 'bubblecursor', name: 'BubbleCursor', desc: 'Targeting facilitation technique using area cursors.', c1: 'red', o: 'Voronoi Dynamic Resizing', vId: 'bubblecursor-magnetic', v: 'Gravity Wells (Magnetic)', c2: 'red' },
+    { id: 'octopocus', name: 'Octopocus', desc: 'Dynamic guide for continuous gesture recognition.', c1: 'sky', o: 'Continuous Cursor Paths', vId: 'octopocus-cheatsheet', v: 'Static Sidebar Cheat Sheet', c2: 'sky' },
+    { id: 'shift', name: 'Shift', desc: 'Solving fat-finger occlusion on touch screens.', c1: 'emerald', o: 'Shifted Callout Window', vId: 'shift-offset', v: 'Offset Virtual Cursor', c2: 'emerald' },
+    { id: 'crossy', name: 'CrossY', desc: 'Crossing-based interfaces instead of point-and-click.', c1: 'orange', o: 'Line Segment Crossing', vId: 'crossy-dwell', v: 'Dwell-Time Selection', c2: 'orange' },
+    { id: 'wedge', name: 'Wedge', desc: 'Visualizing off-screen targets.', c1: 'yellow', o: 'Screen-Edge Isosceles Triangles', vId: 'wedge-halo', v: 'Halo (Circle Arcs)', c2: 'yellow' }
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50 p-8">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <header className="mb-12 text-center">
           <h1 className="text-4xl font-extrabold text-gray-900 mb-4">HCI Research Prototypes Showcase</h1>
-          <p className="text-xl text-gray-600">A collection of revibed interactive systems based on recent research papers.</p>
+          <p className="text-xl text-gray-600">Original systems + Alternative Design Decision implementations.</p>
         </header>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <Link href="/misty" className="group block bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border overflow-hidden">
-            <div className="p-6 h-full flex flex-col">
-              <h2 className="text-2xl font-bold text-blue-700 mb-2 group-hover:text-blue-800">Misty</h2>
-              <p className="text-gray-700 mb-4 flex-1">UI Prototyping Through Interactive Conceptual Blending. Blend layouts and styles from reference images into your WIP React code.</p>
-              <div className="text-blue-600 font-medium text-sm flex items-center">Try Prototype →</div>
+          {systems.map(s => (
+            <div key={s.id} className="bg-white rounded-xl shadow border p-6 flex flex-col">
+              <h2 className={`text-2xl font-bold text-${s.c1}-700 mb-2`}>{s.name}</h2>
+              <p className="text-gray-700 mb-6 flex-1">{s.desc}</p>
+              <div className="flex gap-4">
+                <Link href={`/${s.id}`} className={`bg-${s.c1}-100 text-${s.c1}-800 px-4 py-2 rounded text-sm hover:bg-${s.c1}-200 flex-1 text-center font-bold`}>Original: {s.o}</Link>
+                <Link href={`/${s.vId}`} className={`bg-${s.c2}-100 text-${s.c2}-800 px-4 py-2 rounded text-sm hover:bg-${s.c2}-200 flex-1 text-center font-bold`}>Variant: {s.v}</Link>
+              </div>
             </div>
-          </Link>
-
-          <Link href="/selenite" className="group block bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border overflow-hidden">
-            <div className="p-6 h-full flex flex-col">
-              <h2 className="text-2xl font-bold text-teal-700 mb-2 group-hover:text-teal-800">Selenite</h2>
-              <p className="text-gray-700 mb-4 flex-1">Scaffolding Online Sensemaking. Automatically generate comprehensive overviews and comparison matrices for unfamiliar topics.</p>
-              <div className="text-teal-600 font-medium text-sm flex items-center">Try Prototype →</div>
-            </div>
-          </Link>
-
-          <Link href="/videodiff" className="group block bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border overflow-hidden">
-            <div className="p-6 h-full flex flex-col">
-              <h2 className="text-2xl font-bold text-indigo-700 mb-2 group-hover:text-indigo-800">VideoDiff</h2>
-              <p className="text-gray-700 mb-4 flex-1">Human-AI Video Co-Creation with Alternatives. Compare distinct editing variations of transcripts with AI-suggested B-rolls and cuts.</p>
-              <div className="text-indigo-600 font-medium text-sm flex items-center">Try Prototype →</div>
-            </div>
-          </Link>
-
-          <Link href="/talebrush" className="group block bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border overflow-hidden">
-            <div className="p-6 h-full flex flex-col">
-              <h2 className="text-2xl font-bold text-green-700 mb-2 group-hover:text-green-800">TaleBrush</h2>
-              <p className="text-gray-700 mb-4 flex-1">Sketching Stories with LLMs. Co-create a story with AI by sketching a protagonist&apos;s changing fortune curve on a graph.</p>
-              <div className="text-green-600 font-medium text-sm flex items-center">Try Prototype →</div>
-            </div>
-          </Link>
+          ))}
         </div>
       </div>
     </div>
