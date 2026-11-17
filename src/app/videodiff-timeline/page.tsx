@@ -24,35 +24,37 @@ export default function VideoDiffTimeline() {
       <h1 className="text-3xl font-bold mb-2">VideoDiff: Tim/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import { useState } fat'use client';
-itime-blocks (like Premiere Pro) rather thimport { use</import Link from 'next/link';
+import { useState } from 'react';
+importthan a script.</import Link from 'next/link';
 
 e{g
-export default function Vidcla  const [loading, setLoading] = useState(falou  const [">{loading?'Generating...':'Generate Tim
-line'}</button>
+export default function Vidcla  const [loading, setLoading] = useState(falou  const [data, setData] = useState<any>(null);
+imeline'}</button>
 
       {data?.blocks && (
          setLoading(true);
     try {p-    try {
-      consrf ow-x-auto        method: 'POST', headers: {'Content-Type': 'applic1         bodend">
-              {data.blocks.map((b: any, i: number) =>       });
+      consrf      cuto        method: 'POST', headers: {'Content-Type': 'applic1         body: JSON.stringify({ transcript: "Welcome to my : number) =>       });
       setData(await res.json());
     } finally { setLoading(false); }
   };
 
   return (
     <div className="p-8 max-w-5xl mx-auto font-sans">
--50"      se      } finally { setLoading(falsol  };
+  0"      se      } finally { setLoading(falsol  };
 
   return (
-    <div classNamet-bold";    <div         <Link href="/" className="text-indigo-600 mb-4        <h1 className="text-3xl font-bold mb-2">VideoDiff: Tim/* eslint-disable @typescript-le'use client';
-import { useState } falow-hidden shrink-0 border border-black/20`} style={{width, height: b.type==='cuimport { use0%'}}>
-                     <span class
+    <div classNamet-bold";    <div         <Link href="/" className="text-indigo-600 mb-4        <h1 className="text-3xl font-bold mb-2">VideoDiff: Tim/* eslint-disable @typescript-ex'use client';
+import { useState } fat'use client';
+import { useState } from 'react';
+importthan a script.</import utimport { use%'import { useState } f    <span classNimportthan a script.</import Lin}<
 e{g
-export default function Vidcla  const [loading, setLoading] = useState(falou  city-70 line'}</button>
+export default function Vidcla  const [loadinty-ex mimeline'}</button>
 
       {data?.blocks && (
          setLoading(true);
     try {p-    try {
-      consrf ow-x-auto        methiv
-      {data?. </       );
+      consrf      cuto     </d
+      {data?.blo</d v>
+  );
 }
