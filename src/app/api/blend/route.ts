@@ -1,22 +1,24 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */import { NextResponse } from 'next/server';
-import OpenAI from 'openai';
-
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { NextResponse } from 'next/server';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
 export async function POST(req: Request) {
   try {
     const { wipCode, referenceImage, aspect, type } = await req.json();
 
-    if (!process.env.OPENAI_API_KEY) {
-      return NextResponse.json({ error: 'OPENAI_API_KEY is not set in .env' }, { status: 500 });
+    const apiKey = process.env.GEMINI_API_KEY || process.env.OPENAI_API_KEY;
+    if (!apiKey) {
+      return NextResponse.json({ error: 'API key is not set in environment (need GEMINI_API_KEY or OPENAI_API_KEY)' }, { status: 500 });
     }
 
-    const openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY,
+    const genAI = new GoogleGenerativeAI(apiKey);
+    const model = genAI.getGenerativeModel({ 
+      model: "gemini-1.5-pro",
+      generationConfig: { responseMimeType: "application/json" }
     });
 
     let systemPrompt = '';
-    
+
     if (type === 'global') {
       systemPrompt = `Here is my react and tailwind code:
 ${wipCode}
@@ -69,23 +71,19 @@ Return result in JSON format like the global blend prompt.
 }`;
     }
 
-    const response = await openai.chat.completions.create({
-      model: 'gpt-4o',
-      response_format: { type: 'json_object' },
-      messages: [
-        {
-          role: 'user',
-          content: [
-            { type: 'text', text: systemPrompt },
-            { type: 'image_url', image_url: { url: referenceImage } },
-          ],
-        },
-      ],
-    });
+    const base64Data = referenceImage.split(',')[1];
+    const mimeMatch = referenceImage.match(/data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+).*,.*/);
+    const mimeType = mimeMatch ? mimeMatch[1] : 'image/jpeg';
 
-    const content = response.choices[0].message.content;
-    if (!content) throw new Error('No content returned');
+    const result = await model.generateContent([
+      { text: systemPrompt },
+      { inlineData: { data: base64Data, mimeType } }
+    ]);
     
+    const response = await result.response;
+    const content = response.text();
+    
+    if (!content) throw new Error('No content returned');
     const parsed = JSON.parse(content);
     return NextResponse.json(parsed);
 
