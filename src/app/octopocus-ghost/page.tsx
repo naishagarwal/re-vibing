@@ -9,7 +9,7 @@ export default function OctopocusGhost() {
     <div className="p-8 max-w-4xl mx-auto font-sans">
       <Link href="/" className="text-sky-600 mb-4 block hover:underline">← Back</Link>
       <h1 className="text-3xl font-bold mb-2">Octopocus: Ghost Tracing</h1>
-      <p className="mb-6 text-gray-600">Design Decision: A ghost cursor animates the gesture path slightly ahead of the user's cursor to demonstrate the required action.</p>
+      <p className="mb-6 text-gray-600">Design Decision: A ghost cursor animates the gesture path slightly ahead of the user&apos;s cursor to demonstrate the required action.</p>
       <div className="bg-white rounded shadow border-t-4 border-sky-500 relative h-64 cursor-crosshair overflow-hidden" 
            onMouseMove={e => setProgress(e.nativeEvent.offsetX)}>
          <svg width="100%" height="100%">

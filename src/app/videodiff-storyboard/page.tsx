@@ -13,7 +13,7 @@ export default function VideoDiffStoryboard() {
          {[1,2,3,4].map(i => (
            <div key={i} className="flex flex-col border rounded overflow-hidden shadow-sm">
              <div className="bg-gray-800 h-32 flex items-center justify-center text-gray-400 text-sm">B-Roll {i}</div>
-             <div className="p-3 text-sm bg-gray-50 flex-1">"Welcome to the channel. Today we..."</div>
+             <div className="p-3 text-sm bg-gray-50 flex-1">&quot;"Welcome to the channel. Today we...&quot;"</div>
            </div>
          ))}
       </div>
