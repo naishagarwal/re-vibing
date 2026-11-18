@@ -10,12 +10,12 @@ export default function VideoDiffStoryboard() {
       <h1 className="text-3xl font-bold mb-2">VideoDiff: Comic-book Storyboard</h1>
       <p className="mb-6 text-gray-600">Design Decision: Editing variants are presented as sequential thumbnail grids, looking like a comic book storyboard.</p>
       <div className="bg-white p-8 rounded shadow border-t-4 border-rose-500 grid grid-cols-4 gap-4">
-         {[1,2,3,4].map(i => (
-           <div key={i} className="flex flex-col border rounded overflow-hidden shadow-sm">
-             <div className="bg-gray-800 h-32 flex items-center justify-center text-gray-400 text-sm">B-Roll {i}</div>
-             <div className="p-3 text-sm bg-gray-50 flex-1">&quot;"Welcome to the channel. Today we...&quot;"</div>
-           </div>
-         ))}
+        {[1, 2, 3, 4].map(i => (
+          <div key={i} className="flex flex-col border rounded overflow-hidden shadow-sm">
+            <div className="bg-gray-800 h-32 flex items-center justify-center text-gray-400 text-sm">B-Roll {i}</div>
+            <div className="p-3 text-sm bg-gray-50 flex-1">&quot;Welcome to the channel. Today we...&quot;</div>
+          </div>
+        ))}
       </div>
     </div>
   );
