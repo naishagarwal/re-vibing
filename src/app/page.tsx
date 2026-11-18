@@ -276,7 +276,10 @@ export default function Home() {
       <div className="max-w-6xl mx-auto">
         <header className="mb-12 text-center">
           <h1 className="text-4xl font-extrabold text-gray-900 mb-4">HCI Research Prototypes Showcase</h1>
-          <p className="text-xl text-gray-600">Original systems + Alternative Design Decision implementations.</p>
+          <p className="text-xl text-gray-600 mb-6">Original systems + Alternative Design Decision implementations.</p>
+          <Link href="/evaluation" className="inline-block bg-indigo-600 text-white font-bold px-8 py-3 rounded-full hover:bg-indigo-700 transition-colors shadow-md">
+             View Evaluation Rubric & Rankings →
+          </Link>
         </header>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {systems.map(s => (
